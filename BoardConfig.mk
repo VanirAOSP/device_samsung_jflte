@@ -37,8 +37,6 @@ TARGET_KERNEL_SELINUX_CONFIG := jfselinux_defconfig
 
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
-TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
-
 # WiFi module
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_MODULE_NAME := "dhd"
@@ -119,7 +117,7 @@ TARGET_ADD_ISO_MODE_1600 := true
 TARGET_ADD_ISO_MODE_HJR := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := jflte,jfltexx,i9505,GT-I9505,jgedlte,i9505g,GT-I9505G,jfltevzw,jfltespr,jfltetmo,jfltecri,jflteatt,jfltecan,jflteusc
+TARGET_OTA_ASSERT_DEVICE := jflte,jfltexx,i9505,GT-I9505,jgedlte,i9505g,GT-I9505G,jfltevzw,jfltespr,jfltetmo,jfltecri,jflteatt,jfltecan,jflteusc,jfltezm
 
 # Kernel
 TARGET_KERNEL_CONFIG         := jf_eur_defconfig

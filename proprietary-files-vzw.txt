@@ -1,4 +1,4 @@
-# q6 firmware
+# q6 firmware 
 etc/firmware/q6.b00:etc/firmware/q6.b00
 etc/firmware/q6.b01:etc/firmware/q6.b01
 etc/firmware/q6.b03:etc/firmware/q6.b03
