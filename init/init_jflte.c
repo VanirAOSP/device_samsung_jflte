@@ -133,6 +133,9 @@ void vendor_load_properties()
         property_set("ro.cdma.home.operator.numeric", "311480");
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "10");
+        property_set("ro.com.google.clientidbase.ms","android-verizon");
+        property_set("ro.com.google.clientidbase.am","android-verizon");
+        property_set("ro.com.google.clientidbase.yt","android-verizon");
     } else if (strstr(bootloader, "I9505G")) {
         /* jgedlte */
         property_set("ro.build.fingerprint", "samsung/jgedlteue/jgedlte:4.4.2/KOT49H.S001/131204:user/release-keys");
