@@ -111,6 +111,9 @@ void vendor_load_properties()
         property_set("ro.build.description", "jfltevzw-user 4.3 JSS15J I545VRUEMK2 release-keys");
         property_set("ro.product.model", "SCH-I545");
         property_set("ro.product.device", "jfltevzw");
+        property_set("ro.com.google.clientidbase.ms","android-verizon");
+        property_set("ro.com.google.clientidbase.am","android-verizon");
+        property_set("ro.com.google.clientidbase.yt","android-verizon");
     } else if (strstr(bootloader, "I9505G")) {
         /* jgedlte */
         gsm_properties();
