@@ -129,3 +129,6 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jflte/releasetools
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml
+
+# cmhw
+BOARD_HARDWARE_CLASS += device/samsung/jflte/cmhw/
