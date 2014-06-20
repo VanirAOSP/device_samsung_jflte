@@ -47,11 +47,11 @@ PRODUCT_COPY_FILES += \
 
 # loki
 PRODUCT_PACKAGES += \
-    loki_patch \
+    loki_tool \
     loki_unpatch \
-    loki_flash \
     loki.sh \
-    loki_bootloaders
+    loki_bootloaders \
+    recovery-transform.sh
 
 # GPS
 PRODUCT_PACKAGES += \
