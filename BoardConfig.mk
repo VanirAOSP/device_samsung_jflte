@@ -24,6 +24,8 @@
 -include device/samsung/msm8960-common/BoardConfigCommon.mk
 TARGET_ARCH_VARIANT_CPU := cortex-a15
 
+TARGET_ENABLE_PREBUILT_CLANG := true
+
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/jflte/include
 
 # Kernel
