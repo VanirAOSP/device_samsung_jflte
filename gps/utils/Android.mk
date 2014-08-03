@@ -11,6 +11,7 @@ LOCAL_SHARED_LIBRARIES := \
     libcutils
 
 LOCAL_SRC_FILES += \
+    sec_gps.c \
     loc_log.cpp \
     loc_cfg.cpp \
     msg_q.c \
