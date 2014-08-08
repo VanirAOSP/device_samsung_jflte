@@ -75,8 +75,6 @@
 /dev/hsicctl1             0640   radio      radio
 /dev/hsicctl2             0640   radio      radio
 /dev/hsicctl3             0640   radio      radio
-/dev/ks_bridge            0660   system     system
-/dev/efs_bridge           0660   system     system
 /dev/hsicctl4             0640   radio      radio
 /dev/hsicctl5             0640   radio      radio
 /dev/hsicctl6             0640   radio      radio
@@ -140,6 +138,7 @@
 /dev/smd2                 0660   bluetooth  net_bt_stack
 /dev/ttyHSL1              0660   system     system
 /dev/mdm                  0660   system     radio
+/sys/devices/virtual/smdpkt/smdcntl*       open_timeout   0664 radio radio
 /dev/sdio_tty_ciq_00      0660   system     system
 /dev/tty_sdio_00          0660   system     system
 /dev/ttyGS0               0660   system     system

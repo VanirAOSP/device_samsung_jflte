@@ -145,6 +145,7 @@ void vendor_load_properties()
         property_set("ro.product.model", "GT-I9508");
         property_set("ro.product.device", "jfltezm");
     }
+
     property_get("ro.product.device", device);
     ERROR("Found bootloader id %s setting build properties for %s device\n", bootloader, device);
 
@@ -158,8 +159,6 @@ void gsm_properties()
 
 void cdma_properties(char cdma_sub[])
 {
-    property_set("ro.telephony.default_cdma_sub", cdma_sub); // 0: RUIM/SIM  1: NV
-    property_set("ro.gps.set_privacy", "1");
     property_set("ro.telephony.default_cdma_sub", cdma_sub);
     property_set("ro.gps.set_privacy", "1");
     property_set("telephony.lteOnCdmaDevice", "1");

@@ -51,9 +51,6 @@ on boot
     write /sys/devices/i2c-3/3-005b/update_fw 1
     start qcamerasvr
 
-    # enable pulsing led on boot
-    write /sys/class/sec/led/led_pattern 6
-
 on post-fs-data
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
@@ -62,86 +59,6 @@ on post-fs-data
     mkdir /tombstones/dsps 0771 system system
     mkdir /tombstones/mdm 0771 system system
     mkdir /tombstones/mdm2 0771 system system
-
-
-    # create directory for ril data
-    mkdir /data/misc/radio 0775 radio radio
-    mkdir /data/misc/radio/hatp 0775 radio system
-
-    #HDCP2.X : The directory permission is temporary.
-    mkdir /efs/drm 0775  system system
-    mkdir /efs/drm/dxhdcp2 0774  system system
-
-    # permission for TZIC
-    chown system system /dev/tzic
-
-    #earjack
-    chown system radio /sys/class/audio/earjack/select_jack
-    chown media system /sys/class/audio/earjack/reselect_jack
-    chown system radio /sys/class/audio/earjack/key_state
-    chown system radio /sys/class/audio/earjack/state
-
-    #Essential node for usbservice
-    mkdir /dev/bus/ 755 root root
-    mkdir /dev/bus/usb 755 root root
-
-    # wifi
-    mkdir /efs/wifi 0775 system system
-
-    # Permission for fast dormacy for RIL
-    chown system radio /sys/devices/virtual/sec/mdm_hsic_pm/waketime
-
-    # for TRP/TIS
-    write /data/.psm.info 1
-    chown system root /data/.psm.info
-    chmod 0660 /data/.psm.info
-
-    # icd
-    exec icd_check
-    chown system system /dev/icd
-    chmod 0644 /dev/icd
-    write /dev/icdr 0
-    chown system system /dev/icdr
-    chmod 0644 /dev/icdr
-    chown system system /dev/tzic
-
-    # h2k permission
-    chmod 0644 /efs/redata.bin
-
-    # Permissions for Camera
-    chown system radio /sys/class/camera/rear/rear_camfw
-    chown system radio /sys/class/camera/rear/rear_camtype
-    chown system radio /sys/class/camera/rear/rear_flash
-    chown system radio /sys/class/camera/front/front_camfw
-    chown system radio /sys/class/camera/front/front_camtype
-    chown system camera /sys/class/flash/flash/flash_power
-    chmod 660 /sys/class/flash/flash/flash_power
-
-    # Permissions for NCM
-    chmod 0660 /sys/class/android_usb/android0/terminal_version
-    chown system system /sys/class/android_usb/android0/terminal_version
-
-    # SEC DVFS sysfs node
-    chown radio system /sys/power/cpufreq_max_limit
-    chown radio system /sys/power/cpufreq_min_limit
-    chown radio system /sys/power/cpufreq_table
-    chown radio system /sys/class/kgsl/kgsl-3d0/max_pwrlevel
-    chmod 664 /sys/power/cpufreq_max_limit
-    chmod 664 /sys/power/cpufreq_min_limit
-    chmod 664 /sys/power/cpufreq_table
-    chmod 664 /sys/class/kgsl/kgsl-3d0/max_pwrlevel
-
-    chown radio system /sys/class/sec/sec_touchkey/touch_sensitivity
-    chown radio system /sys/class/sec/sec_touchkey/touchkey_firm_update
-    chown system radio /sys/class/sec/tsp/cmd
-    chown radio system /sys/class/lcd/panel/power_reduce
-    chown radio system /sys/class/lcd/panel/gamma_mode
-    chown system radio /sys/class/sec/switch/reset_switch
-    chown system radio /sys/class/sec/sec_touchkey/glove_mode
-    chown system radio /sys/class/sec/sec_touchkey/flip_mode
-
-    #For hover control from secureinput
-    chown system radio /sys/class/input/input3/proximity_enables
 
     #sensors
     write /sys/class/input/input5/distortion "400 50 15"
@@ -377,11 +294,6 @@ service kickstart /system/bin/qcks -i /firmware-mdm/image/
     oneshot
     disabled
 
-service qrngd /system/bin/qrngd -f
-    class main
-    user root
-    group root
-
 service mdm_helper /system/bin/mdm_helper
     class main
     onrestart setprop ro.service.mdm_helper_restarted "true"
@@ -397,24 +309,19 @@ on property:ro.baseband=mdm
     mkdir /data/qcks 0770 system system
     start kickstart
 
+# Start up mdm_helper if sglte detected
+on property:ro.baseband=sglte
+    mkdir /data/misc/mdmhelperdata 0700
+    start mdm_helper
+
 service time_daemon /system/bin/time_daemon
     class late_start
     user root
     group root
 
-# boot completed
-on property:dev.bootcomplete=1
-   # disable pulsing led on boot complete
-   write /sys/class/sec/led/led_pattern 0
-
 # bugreport is triggered by holding down volume down, volume up and power
 service bugreport /system/bin/dumpstate -d -p -B \
         -o /data/data/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-
-service ohshitbutton /system/bin/reboot
     class main
     disabled
     oneshot
