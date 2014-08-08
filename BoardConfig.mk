@@ -31,9 +31,6 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
 # Architecture
 TARGET_CPU_VARIANT := krait
-TARGET_ARCH_VARIANT_CPU := cortex-a15
-
-TARGET_ENABLE_PREBUILT_CLANG := true
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
@@ -46,10 +43,8 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 zcache msm_rtb.f
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := jf_eur_defconfig
+TARGET_KERNEL_CONFIG := cyanogen_jf_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/jf
-TARGET_KERNEL_VARIANT_CONFIG := KT_jf_defconfig
-TARGET_KERNEL_SELINUX_CONFIG := jfselinux_defconfig
 
 # Audio
 BOARD_HAVE_AUDIENCE_ES325_2MIC := true
@@ -164,11 +159,6 @@ BOARD_SEPOLICY_UNION += \
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
-
-# Permissions for Step Sensor
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
-    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml
 
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
