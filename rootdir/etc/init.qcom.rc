@@ -114,13 +114,10 @@ on boot
 
     setprop ro.telephony.call_ring.multiple false
 
-<<<<<<< HEAD
-=======
     #Set SUID bit for usbhub
     #chmod 4755 /system/bin/usbhub
     #chmod 755 /system/bin/usbhub_init
 
->>>>>>> cm
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
@@ -296,21 +293,12 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
-<<<<<<< HEAD
-    chown root radio /sys/module/rmnet_usb/parameters/dump_ctrl_msg
-
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-=======
     # GPIO DVS
     chown radio system /sys/class/secgpio_check/secgpio_check_all/secgpio_ctrl
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd
     stop hdmid
->>>>>>> cm
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
@@ -319,8 +307,6 @@ on property:bluetooth.isEnabled=true
     start btwlancoex
     write /sys/class/bluetooth/hci0/idle_timeout 7000
 
-<<<<<<< HEAD
-=======
 on property:bluetooth.sap.status=running
     start bt-sap
 
@@ -341,7 +327,6 @@ service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
     user root
     oneshot
 
->>>>>>> cm
 service cnd /system/bin/cnd
     class late_start
     socket cnd stream 660 root radio
@@ -389,6 +374,7 @@ service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0
 on property:ro.baseband="msm"
     # Enable BT-DUN only for all msms
     setprop ro.qualcomm.bluetooth.dun false
+
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
@@ -473,9 +459,6 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     class late_start
     disabled
     oneshot
-
-service macloader /system/bin/macloader
-    class main
 
 #for WiFi MFG(TestMode)
 service mfgloader /system/bin/mfgloader
@@ -676,26 +659,11 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service ril-daemon /system/bin/rild
-    class main
-    socket rild stream 660 root radio
-    socket rild-debug stream 660 radio system
-    socket rild-cas stream 666  casdrm mmb
-    user root
-    group radio cache inet misc audio log qcom_diag sdcard_r shell sdcard_rw
-
-service secril-daemon /system/bin/sec-ril
-    class main
-    user root
-    group radio cache inet misc audio sdcard_rw qcom_diag log
-
-service ril-daemon1 /system/bin/rild -c 1
+service profiler_daemon /system/bin/profiler_daemon
     class late_start
-    socket rild1 stream 660 root radio
-    socket rild-debug1 stream 660 radio system
     user root
+    group root
     disabled
-    group radio cache inet misc audio sdcard_rw qcom_oncrpc diag qcom_diag log
 
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
@@ -736,18 +704,10 @@ on property:persist.sys.ssr.restart_level=1
 on property:persist.sys.ssr.restart_level=3
     write /sys/module/subsystem_restart/parameters/restart_level 3
 
-on property:service.bootanim.exit=1
-    #write /sys/module/rmnet_usb/parameters/dump_ctrl_msg 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb3/accept_ra 2
-
-# CM Performance Profiles
-service nuclear_winter /system/bin/nuclearwinter
-    user root
-    group root
-    oneshot
+service nuclear_winter /system/bin/nuclearwinter		
+	user root		
+	group root		
+	oneshot
 
 # Powersave
 on property:sys.perf.profile=0
@@ -794,7 +754,3 @@ on charger
     write /sys/devices/system/cpu/cpu1/online 0
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
-
-service charger /charger
-    class charger
-    critical
