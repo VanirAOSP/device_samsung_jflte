@@ -20,8 +20,11 @@
 # definition file).
 #
 
+# Use working repos
+TARGET_FUNNY_CATCHPHRASE := NEXT_IS_NOT_BEST
+
 # inherit from common msm8960
--include device/samsung/msm8960-common/BoardConfigCommon.mk
+-include device/samsung/jflte/msm8960-common/BoardConfigCommon.mk
 TARGET_ARCH_VARIANT_CPU := cortex-a15
 
 TARGET_ENABLE_PREBUILT_CLANG := true
