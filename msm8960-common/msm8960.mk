@@ -71,24 +71,24 @@ PRODUCT_PACKAGES += \
 
 # keylayouts
 PRODUCT_COPY_FILES += \
-    device/samsung/msm8960-common/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    device/samsung/msm8960-common/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
-    device/samsung/msm8960-common/keylayout/cyttsp-i2c.kl:system/usr/keylayout/cyttsp-i2c.kl \
-    device/samsung/msm8960-common/keylayout/keypad_8960.kl:system/usr/keylayout/keypad_8960.kl \
-    device/samsung/msm8960-common/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
-    device/samsung/msm8960-common/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
-    device/samsung/msm8960-common/keylayout/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
-    device/samsung/msm8960-common/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
-    device/samsung/msm8960-common/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
-    device/samsung/msm8960-common/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl \
-    device/samsung/msm8960-common/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl \
-    device/samsung/msm8960-common/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
-    device/samsung/msm8960-common/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl
+    device/samsung/jflte/msm8960-common/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/samsung/jflte/msm8960-common/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
+    device/samsung/jflte/msm8960-common/keylayout/cyttsp-i2c.kl:system/usr/keylayout/cyttsp-i2c.kl \
+    device/samsung/jflte/msm8960-common/keylayout/keypad_8960.kl:system/usr/keylayout/keypad_8960.kl \
+    device/samsung/jflte/msm8960-common/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
+    device/samsung/jflte/msm8960-common/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
+    device/samsung/jflte/msm8960-common/keylayout/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
+    device/samsung/jflte/msm8960-common/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
+    device/samsung/jflte/msm8960-common/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
+    device/samsung/jflte/msm8960-common/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl \
+    device/samsung/jflte/msm8960-common/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl \
+    device/samsung/jflte/msm8960-common/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
+    device/samsung/jflte/msm8960-common/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl
 
 # Keychars
 PRODUCT_COPY_FILES += \
-    device/samsung/msm8960-common/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
-    device/samsung/msm8960-common/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm
+    device/samsung/jflte/msm8960-common/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
+    device/samsung/jflte/msm8960-common/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm
 
 # Needed to reset bootmode when leaving recovery
 PRODUCT_COPY_FILES += \
@@ -103,7 +103,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-data-only=0
 
 # Common overlay
-DEVICE_PACKAGE_OVERLAYS += device/samsung/msm8960-common/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/jflte/msm8960-common/overlay
 
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -113,4 +113,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ksm.default=1
 
 # common msm8960
-$(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
+$(call inherit-product, device/samsung/jflte/qcom-common/qcom-common.mk)

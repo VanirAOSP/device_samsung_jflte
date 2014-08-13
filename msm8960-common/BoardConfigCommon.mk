@@ -19,7 +19,7 @@ TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
 # inherit from qcom-common
--include device/samsung/qcom-common/BoardConfigCommon.mk
+-include device/samsung/jflte/qcom-common/BoardConfigCommon.mk
 
 # Architecture
 TARGET_CPU_SMP := true
@@ -65,7 +65,7 @@ COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
 TARGET_PROVIDES_LIBLIGHT := true
 
 # CMHW
-BOARD_HARDWARE_CLASS += device/samsung/msm8960-common/cmhw
+BOARD_HARDWARE_CLASS += device/samsung/jflte/msm8960-common/cmhw
 
 # Audio
 BOARD_HAVE_SAMSUNG_AUDIO := true
@@ -90,7 +90,7 @@ TARGET_DISPLAY_USE_RETIRE_FENCE := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
-        device/samsung/msm8960-common/sepolicy
+        device/samsung/jflte/msm8960-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
         file_contexts \

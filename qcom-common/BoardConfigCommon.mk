@@ -24,7 +24,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 
 # chargers
-BOARD_CHARGER_RES := device/samsung/qcom-common/charger
+BOARD_CHARGER_RES := device/samsung/jflte/qcom-common/charger
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
@@ -46,7 +46,7 @@ TARGET_USES_ION := true
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/qcom-common
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jflte/qcom-common
 
 BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 
