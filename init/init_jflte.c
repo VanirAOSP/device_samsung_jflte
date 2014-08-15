@@ -116,6 +116,7 @@ void vendor_load_properties()
         property_set("ro.product.device", "jfltevzw");
         property_set("ro.cdma.home.operator.alpha", "Verizon");
         property_set("ro.cdma.home.operator.numeric", "311480");
+        property_set("ro.com.google.clientidbase", "android-verizon");
         property_set("ro.com.google.clientidbase.ms","android-verizon");
         property_set("ro.com.google.clientidbase.am","android-verizon");
         property_set("ro.com.google.clientidbase.yt","android-verizon");
